@@ -1,0 +1,90 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --paper: #f6f7f2;
+  --paper-alt: #ecefe6;
+  --ink: #14232b;
+  --muted: #55656d;
+  --teal: #0f766e;
+  --coral: #d9482b;
+  --card: #ffffff;
+  --line: #d5dacd;
+  --bs-primary: var(--teal);
+  --bs-primary-rgb: 15, 118, 110;
+}
+[data-bs-theme="dark"] {
+  --paper: #0f1a1f;
+  --paper-alt: #15242b;
+  --ink: #e8efe9;
+  --muted: #9fb0b4;
+  --teal: #2bb3a6;
+  --card: #1a2a31;
+  --line: #2a3d45;
+}
+
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { font-family: "Source Sans 3", system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.65; }
+h1, h2, h3, .brand { font-family: "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em; }
+a { color: var(--teal); }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.skip-link { position: absolute; left: -999px; background: var(--ink); color: var(--paper); padding: .5rem 1rem; z-index: 2000; }
+.skip-link:focus { left: 8px; top: 8px; }
+
+/* Bootstrap overrides so the theme colours apply */
+.btn-primary { --bs-btn-bg: var(--teal); --bs-btn-border-color: var(--teal); --bs-btn-hover-bg: #0b5c56; --bs-btn-hover-border-color: #0b5c56; --bs-btn-color: #fff; --bs-btn-hover-color: #fff; --bs-btn-active-bg: #0b5c56; }
+[data-bs-theme="dark"] .btn-primary { --bs-btn-color: #06201e; --bs-btn-hover-color: #06201e; --bs-btn-hover-bg: #5fd3c8; --bs-btn-hover-border-color: #5fd3c8; }
+.btn-outline-primary { --bs-btn-color: var(--teal); --bs-btn-border-color: var(--teal); --bs-btn-hover-bg: var(--teal); --bs-btn-hover-border-color: var(--teal); --bs-btn-hover-color: #fff; --bs-btn-active-bg: var(--teal); }
+.table, .list-group-item { --bs-table-bg: transparent; --bs-table-color: var(--ink); --bs-list-group-bg: var(--card); --bs-list-group-color: var(--ink); --bs-list-group-border-color: var(--line); }
+.form-control, .form-select { background-color: var(--card); color: var(--ink); border-color: var(--line); }
+
+/* ---------- Navbar ---------- */
+.site-nav { background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.brand { font-weight: 800; color: var(--ink) !important; }
+.site-nav .nav-link { color: var(--ink); font-weight: 600; }
+.site-nav .nav-link:hover, .site-nav .nav-link.active { color: var(--teal); }
+
+/* ---------- Layout ---------- */
+.section { padding: 4.5rem 0; }
+.section.alt { background: var(--paper-alt); }
+.section h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 1.75rem; }
+.hero { padding: 9rem 0 5rem; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 800; line-height: 1.08; margin-bottom: 1.25rem; }
+.hero-kicker { color: var(--muted); font-weight: 600; margin-bottom: .75rem; }
+#rotator { color: var(--coral); display: inline-block; min-width: 3ch; }
+.lead { max-width: 52ch; color: var(--muted); margin-bottom: 1.75rem; }
+.portrait { margin: 0 auto; max-width: 320px; }
+.portrait img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 28px; box-shadow: 14px 14px 0 var(--coral); }
+
+/* ---------- Skills (CSS Grid) ---------- */
+.skill-group { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem; height: 100%; }
+.skill-group h3 { font-size: 1.1rem; font-weight: 700; }
+.chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: .5rem; padding: 0; list-style: none; margin: 0; }
+.chips li { border: 1px solid var(--line); border-radius: 6px; padding: .3rem .6rem; text-align: center; font-weight: 600; font-size: .92rem; transition: background .2s, color .2s; }
+.chips li:hover { background: var(--teal); color: #fff; }
+
+/* ---------- Projects ---------- */
+.project-card { border: 1px solid var(--line); border-left: 5px solid var(--teal); border-radius: 10px; background: var(--card); color: var(--ink); height: 100%; display: flex; flex-direction: column; }
+.project-card.is-new { animation: reveal .35s ease; }
+.project-card .card-body { display: flex; flex-direction: column; flex: 1; }
+.project-card .card-title { font-weight: 800; }
+.project-card .tag { background: var(--paper-alt); border-radius: 4px; padding: .1rem .5rem; font-size: .8rem; font-weight: 600; margin-right: .35rem; }
+.project-card .btn { margin-top: auto; align-self: flex-start; }
+@keyframes reveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Certificates (Flexbox) ---------- */
+.cert-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .75rem; max-width: 760px; }
+.cert-list li { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: .75rem; }
+.cert-list .type { color: var(--muted); font-style: italic; }
+
+/* ---------- Form ---------- */
+#formAlert:empty { display: none; }
+.form-control.is-valid, .form-select.is-valid { border-color: var(--teal); }
+
+/* ---------- Footer / back to top ---------- */
+.site-footer { padding: 1.5rem 0; border-top: 1px solid var(--line); color: var(--muted); }
+#toTop { position: fixed; right: 1rem; bottom: 1rem; width: 44px; height: 44px; border-radius: 50%; z-index: 1000; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 575.98px) { .hero { padding-top: 7rem; } .section { padding: 3rem 0; } }
+@media (min-width: 992px) { .hero { min-height: 100vh; display: flex; align-items: center; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .project-card.is-new { animation: none; } }
